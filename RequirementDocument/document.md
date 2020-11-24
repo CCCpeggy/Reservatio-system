@@ -6,6 +6,7 @@
 
 This document is written mainly to let the users understand how to use our project software, and it describes the functions, developing systems and the methods used in our
 project. This document can also be used for the developers to maintain and modify the software, as it includes the whole structure of the system.
+
 本文件主要是在描述我們專案的功能、開發系統及方法,以及讓使用者了解如何使用本專案的軟體,此外,本文件也適用於開發者的經營及維護,因為此文件包含了整體系統的架構。
 
 <!--文件中的専有詞彙解釋 -->
@@ -19,6 +20,7 @@ This is a convenient reservation system of the conference room. By using our sys
 immediately, so that you can avoid the situation of having no place to go when calling a meeting.
 The main goal of our project is that we are able to let users reserve conference rooms, remind the users that the reserved date and time are around the corner, and show what the
 reference rooms are equipped to the user, so that the user can choose the most appropriate room for them to use.
+
 本專案主要是用於會議室的預約統,而使用本蒸統的好處為可以較為方便,迅速地知道何時有空間的會議室可供使用,並提供預約,以防要開會卻沒有會議室可用的窘境。
 而本專案主要的目標為,可提供使用者預約會議室、可提醒使用者預約時間快到了,以及提供使用者各會議室的配備、設施,以供使用者選擇最適合自己的會議室。
 
@@ -30,10 +32,36 @@ reference rooms are equipped to the user, so that the user can choose the most a
 
 ![](../Drawio/2.1.1.drawio.svg)
 
-* c#
-  * asp.net
-* sql server(microsoft)
-* 
+We will use asp.net to create our website, and the language we use is C#. Also, we will use sql server from Microsoft to build our web, we'll use it to save data.
+
+The following are our system functions:
+  * Manager / User login
+  * Manager managing users
+  * Manager managing booking records
+  * Manager search users / booking records
+  * Manager giving users authority
+  * User reserving conference rooms
+  * User cancel booking
+  * System reminds user about their reservation time
+
+System interface:
+  There will be a few kinds of interfaces.
+  * login interface 
+    * Use google account to login
+  * reserving interface
+    * Lists details of every conference room
+    * Requires user to enter the participants' email address
+    * Show calander to user to let him/ her choose date
+    * after date is chosen, system shows the periods available
+    * 
+
+  * 
+Back-up and Recovery:
+  For this part, we'll use google's gcp service to back-up all the data every fixed period (ex: 1 month). 
+
+Non-interactive operation:
+  The system will send an e-mail to the user to remind him / her that the time the user booked is coming soon.
+
 
 ### Functional Requirements Definition
 
