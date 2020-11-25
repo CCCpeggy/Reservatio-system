@@ -564,21 +564,33 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 
 ### 4.1 Performance Requirements
 
-1. Every booking submission and modification should be updated in the common database within 3 seconds after each submission and modification activity
-2. Loading the announcement about the reservation website within 3 seconds 
-3. Results for the availability of each room within 5minute
-4. After confirm the reservation of the booking, the system redirects to the main page within 3 seconds
-5. Confirmation email shall be sent into the user's mentioned email within 1minute after confirmation page termination
+The reservation system must load in a first speed to avoid user being waited for too long. As the sentences listed below are the standard requirements for the loading speed of the system. All connections' or loading's speed must be less than 10 seconds. Every booking submission and modification should be updated in the common database within 3 seconds after each submission and modification activity. Loading the announcement about the reservation website within 3 seconds. Results for the availability of each room within 10 seconds. After confirming the reservation of the booking, the system redirects to the main page within 3 seconds. Confirmation email shall be sent into the user's mentioned email within 1minute after confirmation page termination. Access is already installed on this computer and is a Windows operating system.  
+
+
 |描述|
 |每個載入畫面不超過3秒|
 
 
 ### 4.2 Safety Requirements
+This system is based on the website servers. That is, to make sure the system work smoothly it has a period of time for every user who need to book a room. The system will check whether the user is performing any activities on the reservation page, over 10 minutes without performing any activities the system will let that user log out automatically.(請勿使用過久)
 
-* 使用者使用這網頁不會造成任何硬體上的損壞
-* 請勿使用過久
+Furthermore, this website is safe for every user which makes no damage for any hardware or software equirements. It should have no virus as sending confirmed email or operating over the website. (使用者使用這網頁不會造成任何硬體上的損壞)
+
+The database is the most important section of this system. The database should be carefully maintained by the administrator any loss may lead to chaos. The system protects the information of user and database and let no one to access any of its information.
+
+
 
 ### 4.3 Security Requirements
+This system have high quality security system. For the user identity verificaion, to avoid injection attack the system will request the user to input the correct format of the emaill address as verifiing user identity. Before confirmed the booking of the room the host must input the numbers of paticipants and their email, notice them to confirm the reservation. The reservation will be canceled by the system if there have no one confirmed.
+
+To protect the database of the system, the security system have to avoid the user access the source code without permission. Moreover, avoid privilege escalation is also a important section of security system. The administrator must not give the normal user high authority. Also, the system have no bug to let the user use privilege escalation for attracking the system. 
+
+As the administrator manages both database and reservation of the system, the account and password of the administrator must be highly confidential to avoid data accessed by anyone. It have a hidden option for the administrator to log in. 
+
+1. User identity verification, to avoid injection attack
+     The user must input the correct format of the email address as verifing user identity.
+  2. Avoid user access to the source code
+  3. Avoid privilege escalation
 
 3. 驗證所有使用者輸入資料，避免 injection 攻擊
    1. email 格式符合
