@@ -13,6 +13,11 @@ project. This document can also be used for the developers to maintain and modif
 ### 1.2 Glossary
 
 ### 1.3 Intended Audience and Reading Suggestions
+本節會因閱讀本文件的用戶角色不同，而建議幾種閱讀方式。
+如果你是一個**沒有工程背景的使用者**，那就建議從1.4Product Scope開始閱讀，接下來可以跳到2.2Functional Requirements Definition及2.3 User Interface Specifications來了解使用者介面，最後再看4.2 safty requirements 來了解如何安全的使用本軟體。
+如果你是一個**有工程背景的使用者**，那就建議從1.4Product Scope開始閱讀，接下來可以跳到2.1System Environment來了解整個系統的環境、再看2.2Functional Requirements Definition及2.3 User Interface Specifications來了解使用者介面，最後再看4.2 safty requirements 來了解如何安全的使用本軟體。
+如果你是一個**沒有工程背景的管理員**，考慮到你可能需要維護此系統，那麼建議將這份文件從頭到尾都仔細閱讀一遍，以便於理解本系統所有運作的原理、方式，以及系統上的架構、需求。
+如果你是一個**有工程背景的管理員**，考慮到你可能需要維護此系統，那麼建議詳細閱讀2.1System Environment來了解整個系統的環境、再看2.2Functional Requirements Definition及2.3 User Interface Specifications來了解使用者介面的整體流程以及一些user cases，如果還需要深入user cases的話，3.2Functional Requirements會是你的好選擇，此外4.1Performance Requirements及4.3 Security Requirements將會是一個重要的考量，所以請仔細閱讀。
 
 ### 1.4 Product Scope
 
@@ -21,7 +26,7 @@ immediately, so that you can avoid the situation of having no place to go when c
 The main goal of our project is that we are able to let users reserve conference rooms, remind the users that the reserved date and time are around the corner, and show what the
 reference rooms are equipped to the user, so that the user can choose the most appropriate room for them to use.
 
-本專案主要是用於會議室的預約系統,而使用本蒸統的好處為可以較為方便,迅速地知道何時有空間的會議室可供使用,並提供預約,以防要開會卻沒有會議室可用的窘境。
+本專案主要是用於會議室的預約系統,而使用本預約系統的好處為可以較為方便,迅速地知道何時有空間的會議室可供使用,並提供預約,以防要開會卻沒有會議室可用的窘境。
 而本專案主要的目標為,可提供使用者預約會議室、可提醒使用者預約時間快到了,以及提供使用者各會議室的配備、設施,以供使用者選擇最適合自己的會議室。
 
 ### 1.5 References
