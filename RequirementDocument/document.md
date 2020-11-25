@@ -11,8 +11,27 @@ project. This document can also be used for the developers to maintain and modif
 
 <!--文件中的専有詞彙解釋 -->
 ### 1.2 Glossary
+* asp.net
+  ASP.NET is a free web framework that can be used to create great websites and web applications using HTML, CSS, and JavaScript. You can also create Web APIs and use real-time technologies such as Web communication terminals.
+
+* SQL server
+  SQL Server generally refers to a database server. SQL Server is already one of the most commonly used servers in the online world, because SQL Server and Web Server will be used by almost every person when they set up a website.
+
+  The language in which the database server interacts with humans or applications is called the SQL language. The so-called SQL language is Structured Query Language. Through this language (similar to programming syntax), we can easily and quickly perform actions such as adding, deleting, modifying, and querying data in the database.
 
 ### 1.3 Intended Audience and Reading Suggestions
+This section will suggest several reading methods due to the different roles of users reading this document.
+
+If you are a **user without engineering background**, we recommend you to start reading from section 1.4 : Product Scope, then you can skip to section 2.2 : Functional Requirements Definition and section1 2.3 : User Interface Specifications to understand the user interface, and finally read section 4.2 : safty requirements to learn how to use this software safely.
+
+If you are a **user with engineering background**, we recommend you to start reading from section 1.4 : Product Scope, then you can skip to section 2.1 : System Environment to understand the environment of the entire system, and then look at section 2.2 : Functional Requirements Definition and section 2.3 : User Interface Specifications to understand the user interface, and finally see section 4.2 : safty requirements to understand how to use this software safely.
+
+
+If you are a **manager with no engineering background**, considering that you may need to maintain this system, we recommend you to read this document carefully from the beginning to the end, so that you understand all the principles and methods of the operations of the system, and also the architecture and requirements of the system.
+
+If you are a **manager with engineering background**, considering that you may need to maintain this system, we recommend you to read section 2.1 : System Environment to understand the environment of the entire system, and then read section : 2.2 Functional Requirements Definition and section 2.3 : User Interface Specifications to understand the overall flow of the user interface and some user cases. 
+If you need to go deep into user cases, section 3.2 : Functional Requirements will be a good choice for you. In addition, section 4.1 : Performance Requirements and section 4.3 : Security Requirements will be an important consideration, so please read these sections carefully .
+
 本節會因閱讀本文件的用戶角色不同，而建議幾種閱讀方式。
 如果你是一個**沒有工程背景的使用者**，那就建議從1.4Product Scope開始閱讀，接下來可以跳到2.2Functional Requirements Definition及2.3 User Interface Specifications來了解使用者介面，最後再看4.2 safty requirements 來了解如何安全的使用本軟體。
 如果你是一個**有工程背景的使用者**，那就建議從1.4Product Scope開始閱讀，接下來可以跳到2.1System Environment來了解整個系統的環境、再看2.2Functional Requirements Definition及2.3 User Interface Specifications來了解使用者介面，最後再看4.2 safty requirements 來了解如何安全的使用本軟體。
@@ -30,7 +49,12 @@ reference rooms are equipped to the user, so that the user can choose the most a
 而本專案主要的目標為,可提供使用者預約會議室、可提醒使用者預約時間快到了,以及提供使用者各會議室的配備、設施,以供使用者選擇最適合自己的會議室。
 
 ### 1.5 References
-
+* asp.net
+  * https://zh.wikipedia.org/wiki/ASP.NET
+  * https://docs.microsoft.com/zh-tw/aspnet/overview
+* SQL server
+  * https://www.raidenhttpd.com/manual/sql-server.html
+  * https://zh.wikipedia.org/wiki/Microsoft_SQL_Server
 ## 2. Overall Description
 
 ### 2.1 System Environment
@@ -597,4 +621,3 @@ As the administrator manages both database and reservation of the system, the ac
 4. 避免使用者撈到原始碼
 5. 避免使用者越權
 5. 避免使用者進行非預期操作
-
