@@ -1,5 +1,4 @@
 @import "Cover.md" 
-<div STYLE="page-break-after: always;"></div>
 
 <style>
 * {
@@ -7,11 +6,9 @@
 }
 </style>
 
-
 ## Table of Contents
 
 [TOC]
-
 
 <div STYLE="page-break-after: always;"></div>
 
@@ -93,6 +90,8 @@ The following are the Non-interactive operations and the Back-up and Recovery me
 
 * Back-up and Recovery:
   For this part, we'll use Google's GCP service to back-up all the data every fixed period. (ex: 1 month)
+
+<div STYLE="page-break-after: always;"></div>
 
 ### 2.2 Functional Requirements Definition
 
@@ -432,6 +431,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 ### 3.2 Functional Requirements
 
 #### 3.2.1 User login (Enter homepage)
+
 |Use case ID|1|
 |-----|--------|
 |Use Case Name|User login (Enter homepage)|
@@ -443,6 +443,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 |Normal Flow|1. User presses the login button.<br>2. The system connects to the google account automatically<br>3. After connecting to user's google account, user succeeds in entering user's homepage. |
 
 #### 3.2.2 Manager login (Enter homepage)
+
 |Use case ID|2|
 |-----|--------|
 |Use Case Name|Manager login (Enter homepage)|
@@ -454,6 +455,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 |Normal Flow|1. Manager presses the login button.<br>2. The system connects to the google account automatically<br>3. After connecting to manager's google account, user succeeds in entering manager's homepage. |
 
 #### 3.2.3 Log out
+
 |Use case ID|3|
 |-----|--------|
 |Use Case Name|Log out|
