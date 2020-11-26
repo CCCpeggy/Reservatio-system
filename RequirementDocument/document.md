@@ -1,15 +1,19 @@
+@import "Cover.md" 
+<div STYLE="page-break-after: always;"></div>
+
 <style>
 * {
   font-family: "Times New Roman"
 }
 </style>
 
+
 ## Table of Contents
 
 [TOC]
 
-<div STYLE="page-break-after: always;"></div>
 
+<div STYLE="page-break-after: always;"></div>
 
 ## Introduction
 
@@ -569,13 +573,3 @@ This system have high quality security system. For the user identity verificaion
 To protect the database of the system, the security system have to avoid the user access the source code without permission. Moreover, avoid privilege escalation is also a important section of security system. The administrator must not give the normal user high authority. Also, the system have no bug to let the user use privilege escalation for attracking the system. 
 
 As the administrator manages both database and reservation of the system, the account and password of the administrator must be highly confidential to avoid data accessed by anyone. It have a hidden option for the administrator to log in. 
-<<<<<<< HEAD
-
-1. User identity verification, to avoid injection attack
-     The user must input the correct format of the email address as verifing user identity.
-  2. Avoid user access to the source code
-  3. Avoid privilege escalation
-
-</font>
-=======
->>>>>>> 2d3122edefc0f6d61c43d893d0b46d2dbc974a15
