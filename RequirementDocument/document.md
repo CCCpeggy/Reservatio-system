@@ -6,6 +6,8 @@
 
 # Software Requirements Specification
 
+[TOC]
+
 ## Introduction
 
 ### 1.1 Purpose
@@ -112,7 +114,7 @@ Before logging in, the user is required to have a Google account, and the accoun
 **Xref:** Section 3.2.1  User login (Enter homepage) 
 
 
-### **2.2.2**
+#### 2.2.2
 **User cases** Manager login (Enter homepage) 
 
 **Diagram**
@@ -131,7 +133,7 @@ Before logging in, the manager is required to have a Google account, and the acc
 **Xref:** Section 3.2.2 Manager login (Enter homepage) 
 
 
-### **2.2.3**
+#### 2.2.3
 
 **User cases** Log out 
 
@@ -150,7 +152,7 @@ Before logging out, the user or manager needs to have logged in to our web page.
 
 **Xref:** Section 3.2.3 Log out 
 
-### **2.2.4**
+#### 2.2.4
 
 **User cases** User reserve conference room.
 
@@ -176,7 +178,8 @@ Before reserving the conference room, the user needs to have logged in to our we
 
 **Xref:** Section 3.2.4  User reserve conference room. 
 
-### **2.2.5**
+#### 2.2.5
+
 **User cases** User views reserving record.
 
 **Diagram**
@@ -195,7 +198,7 @@ Before querying the conference room record, the user needs to have logged in to 
 
 **Xref:** Section 3.2.5 User views reserving records. 
 
-### **2.2.6**
+#### 2.2.6
 
 **User cases** User cancels room reservation. 
 
@@ -217,7 +220,7 @@ Before canceling the reservation of the conference room, the user needs to log i
 
 **Xref:** Section 3.2.6  User cancels room reservation. 
 
-### **2.2.7**
+#### 2.2.7
 
 **User cases** Manager edits the room's overall settings 
 
@@ -240,7 +243,7 @@ Before the manager changes the meeting room information, the manager needs to ha
 
 **Xref:** Section 3.2.7 Manager edits the room's overall settings 
 
-### **2.2.8**
+#### 2.2.8
 
 **User cases** Manager edits a single room's settings 
 
@@ -264,9 +267,9 @@ Before the manager changes the meeting room information, the manager needs to ha
 
 **Xref:** Section 3.2.8 Manager edits a single room's settings
 
-### **2.2.9**
+#### 2.2.9
 
-**User cases** Search users //搜尋user
+**User cases** Search users
 
 **Diagram**
 
@@ -287,7 +290,7 @@ The manager must have logged in to the system, and the user account he / she wan
 
 **Xref:** Section 3.2.9 Search users 
 
-### **2.2.10**
+#### 2.2.10
 
 **User cases** Manager edits user's authority settings 
 
@@ -309,7 +312,7 @@ The manager must have logged in to the system, and the user account he / she wan
 
 **Xref:** Section 3.2.10 Manager edits the user's authority settings  
 
-### **2.2.11**
+#### 2.2.11
 
 **User cases** Manager views individual user's room reservation record. 
 
@@ -441,7 +444,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 
 ### 3.2 Functional Requirements
 
-### **3.2.1** User login (Enter homepage)
+#### **3.2.1** User login (Enter homepage)
 |Use case ID|1|
 |-----|--------|
 |Use Case Name|User login (Enter homepage)|
@@ -452,7 +455,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 |Postconditions|User completes logging in the system|
 |Normal Flow|1. User presses the login button.<br>2. The system connects to the google account automatically<br>3. After connecting to user's google account, user succeeds in entering user's homepage. |
 
-### **3.2.2** Manager login (Enter homepage)
+#### **3.2.2** Manager login (Enter homepage)
 |Use case ID|2|
 |-----|--------|
 |Use Case Name|Manager login (Enter homepage)|
@@ -463,7 +466,7 @@ We had already introduced them briefly in Chapter 2.1, the following are the mor
 |Postconditions|Manager completes logging in the system|
 |Normal Flow|1. Manager presses the login button.<br>2. The system connects to the google account automatically<br>3. After connecting to manager's google account, user succeeds in entering manager's homepage. |
 
-### **3.2.3** Log out
+#### **3.2.3** Log out
 |Use case ID|3|
 |-----|--------|
 |Use Case Name|Log out|
