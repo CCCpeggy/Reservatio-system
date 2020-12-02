@@ -1,0 +1,47 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="209px" height="161px" viewBox="-0.5 -0.5 209 161" content="&lt;mxfile host=&quot;1bfbdbd0-ce3d-4de7-b3ab-5ac546019d22&quot; modified=&quot;2020-11-25T02:52:59.195Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36&quot; etag=&quot;d6pU3r9W0F7vJWThuTyd&quot; version=&quot;13.6.5&quot;&gt;&lt;diagram id=&quot;OS0fRv-P-ZJ2ppH_bvuR&quot; name=&quot;Page-1&quot;&gt;rZTBcoMgEEC/xmtGpRpzbJM0vfTkoWcqW2AGXQcxmn59IWLUsZ1pp7kgvl1weewYkH3ZnzStxSsyUEEcsj4ghyCOSZLa0YHLAB4iD7iWbEDRBHL5CR6GnraSQbNINIjKyHoJC6wqKMyCUa2xW6Z9oFp+taYcViAvqFrTN8mMGGgWbyf+ApKL8ctRuhsiJR2T/UkaQRl2M0SOAdlrRDPMyn4PyrkbvQzrnn+I3grTUJnfLPAVn6lq/dlyySuXYIeUlnVAnqr3xj18weYyWtDYVgzcRqENd0IayGtauGhnr90yYUpl3yI7PYM20hp8VG5/cjA47Tkv15/ApUM/Q778E2AJRl9sythMW6/S99JotpsuJg6zgYn5paQ+kfpm4LetJ1924pV9ry9b6WsbcA2KyBVc29IOCrnT+R999xC1CzfbZOEqS1auojTdJGtb5O+y7OvUx9fY7GdAjl8=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="208" height="160" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 206px; height: 1px; padding-top: 7px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Sign in
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="104" y="19" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Sign in
+                </text>
+            </switch>
+        </g>
+        <rect x="20.75" y="65" width="166.5" height="30" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 165px; height: 1px; padding-top: 80px; margin-left: 22px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                use google to login
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="104" y="84" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    use google to login
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
