@@ -30,8 +30,11 @@ This document provides a comprehensive architectural overview of the system, usi
 This document presents the architectural as a series of views; use case view, process view, deployment view, and implementation view. These views are presented as Rational Rose Models and use the Unified Modeling Language (UML).
 
 ## 3. Architectural Goals and Constraints
-
-[This section describes the software requirements and objectives that have some significant impact on the architecture, for example, safety, security, privacy, use of an off-the-shelf product, portability, distribution, and reuse. It also captures the special constraints that may apply: design and implementation strategy, development tools, team structure, schedule, legacy code, and so on.]
+有一些關鍵的要求和系統結構和安全性有重要的影響。分別為:
+1.本系統的功能需要透過google帳號登入才能進行。
+2.本系統提供查詢某些數據的功能，所以系統的接口必須能夠負擔一定的流量。
+3.所有關於客戶帳號的隱私必須保證他們的安全性。
+4.在開發體系結構時，必須考慮到系統的負載量及性能要求。
 
 ## 4. Use-Case View
 
@@ -42,20 +45,49 @@ This document presents the architectural as a series of views; use case view, pr
 [This section illustrates how the software actually works by giving a few selected use-case (or scenario) realizations, and explains how the various design model elements contribute to their functionality.]
 
 ## 5. Logical View
-
-[This section describes the architecturally significant parts of the design model, such as its decomposition into subsystems and packages. And for each significant package, its decomposition into classes and class utilities. You should introduce architecturally significant classes and describe their responsibilities, as well as a few very important relationships, operations, and attributes.]
-
 ### 5.1 Overview
 
-[This subsection describes the overall decomposition of the design model in terms of its package hierarchy and layers.]
+本節是對於我們系統logic view，描述了系統所用到的類別，還會分成好幾種包，並描述了各個包之間的關係與組織，還包含了重要的Use case的實踐過程，而且可以讓你了解本系統的子系統、package和layer之間的關係。
 
 ### 5.2 Architecturally Significant Design Packages
 
-[For each significant package, include a subsection with its name, its brief description, and a diagram with all significant classes and packages contained within the package. For each significant class in the package, include its name, brief description, and, optionally a description of some of its major responsibilities, operations and attributes.]
+我們的系統主要包含5個主要軟件包
+分別為:
+1.Presentation
+    本包為介紹使用者與系統通訊的主要架構，包含了各種的boundary，並提供使用者顯示頁面、變更設定、搜尋資料、預約等等的功能。
+2.Application
+    本包主要為系統內部本身運算的函式及架構，包含各種的controller，提供系統獲取資料、建立新資料、傳送data至google日曆、更新、disable或enable預約等功能。
+3.Domain
+    包含了一些room package、reservation package、account package、reservation center package。
+4.Persistence
+    包含系統保留特定的類別，在我們的設計上，只有room data得以被DB保留。
+5.Services
+    包含用於系統進行維護的類別，目前所有的維護都是手動的。
+
+#### Logical View
+![](../Drawio/D_2_5.2.1.drawio.svg)
+#### Presentation Package
+![](../Drawio/D_2_5.2.2.drawio.svg)
+#### Application Package
+![](../Drawio/D_2_5.2.3.drawio.svg)
+#### Domain Package
+![](../Drawio/D_2_5.2.4.drawio.svg)
+#### Room package
+![](../Drawio/D_2_5.2.5.drawio.svg)
+#### Reservation package
+![](../Drawio/D_2_5.2.6.drawio.svg)
+#### Account package
+![](../Drawio/D_2_5.2.7.drawio.svg)
+#### Reservation Center package
+![](../Drawio/D_2_5.2.8.drawio.svg)
+### Persistence
+![](../Drawio/D_2_5.2.9.drawio.svg)
 
 ## 6. Process View
 
-[This section describes the system's decomposition into lightweight processes (single threads of control) and heavyweight processes (groupings of lightweight processes). Organize the section by groups of processes that communicate or interact. Describe the main modes of communication between processes, such as message passing, interrupts, and rendezvous.]
+本章節主要將進程分成lightweight process(single threads of control)和heavyweight process(groupings of lightweight processes).然後透過資料的連結或交互的過程來將他們分類組織起來，像是傳遞、中斷和集合。
+就以設計上來說，我們的預約系統提供的所有應用程序功能可以以下圖所示之流程圖。(應用程序功能請參見Application Package)
+![](../Drawio/D_2_5.2.10.drawio.svg)
 
 ## 7. Deployment View
 
