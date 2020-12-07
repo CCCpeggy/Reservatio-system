@@ -1,0 +1,67 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="191px" height="191px" viewBox="-0.5 -0.5 191 191" content="&lt;mxfile host=&quot;42058c8b-1563-41fb-b559-3342927c5d3d&quot; modified=&quot;2020-12-05T10:01:45.555Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36&quot; version=&quot;13.10.0&quot; etag=&quot;ecL3QIVd5eVYXVCIvY3m&quot; type=&quot;embed&quot;&gt;&lt;diagram id=&quot;ZpdX6mea0TjnKZdYiprl&quot; name=&quot;第 1 页&quot;&gt;zVVNk9owDP01mWlvib0L7BWWbnvox5RDzybRxp46dsZRCPTXV44NIQPM0sJ0ekmkZ+nJepHjhC+q7YsTtfxsC9AJS4ttwp8Txhif0dMDuwA8TnkASqeKAGUDsFK/IIJpRFtVQDMKRGs1qnoM5tYYyHGECedsNw57tXpctRYlnACrXOhT9IcqUAZ0xqYD/hFUKfeVs8lTWKnEPjh20khR2O4I4suEL5y1GKxquwDttdvrEvI+XFg9bMyBwWsSWEjYCN3G3r5DA24jUFnzTeQ/vRJhp7jbt+9sawrwDGnC551UCKta5H61o+9NmMRKk5eRGQuAQ9he3GR2aJ1GBmwF6HYUEhN4FCtOyzS63SB99hQxeST7Q8RE/NrlgXgQhIyoyXl9+Ik+/5saWXalHNkd5Hg4I8dEU4F5oTZkltj3OBGV79usm7r3UxroKtDEcCo0zriCpKXBpNeLtSVpT6dbKy8ZSz8930K7tv6P0FNr1eAtVIVqxNrv7e8pOgkowS2EyUF/dV8svnt/C1/eE13muGWYhValIVvD60B219lm1872Pc7649tnnRLojiFnTj/u2oNtpZcGFe7+ydk/NB8Fmp3qw87Iw/5cHXKHW6hfO7rK+fI3&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="190" height="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 188px; height: 1px; padding-top: 20px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                ReservationPackage
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="95" y="24" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    ReservationPackage
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="40" width="190" height="10" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <rect x="0" y="50" width="190" height="140" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 188px; height: 1px; padding-top: 120px; margin-left: 2px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                <div>
+                                    room id
+                                </div>
+                                <div>
+                                    user Google client ID
+                                </div>
+                                <div>
+                                    borrower list
+                                </div>
+                                <div>
+                                    disable
+                                </div>
+                                <div>
+                                    whetherCancelOrNot()
+                                </div>
+                                <div>
+                                    cancel()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2" y="124" fill="#000000" font-family="Helvetica" font-size="12px">
+                    room id...
+                </text>
+            </switch>
+        </g>
+        <ellipse cx="170" cy="20" rx="10" ry="10" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 162.5 30 L 177.5 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
