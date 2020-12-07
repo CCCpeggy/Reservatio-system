@@ -7,10 +7,11 @@
 ### 1.1 Purpose
 
 This document provides a comprehensive architectural overview of the system, using a number of different architectural views to depict different aspects of the system. It is intended to capture and convey the significant architectural decisions which have been made on the system.
-[This section defines the purpose of the Software Architecture Document, in the overall project documentation, and briefly describes the structure of the document. The specific audiences for the document should be identified, with an indication of how they are expected to use the document.]
+We will introduce some of our functions in later chapters.
 
 ### 1.2 Scope
 
+This document helps users to know more about our product, and 
 [A brief description of what the Software Architecture Document applies to; what is affected or influenced by this document.]
 
 ### 1.3 Definitions, Acronyms and Abbreviations
