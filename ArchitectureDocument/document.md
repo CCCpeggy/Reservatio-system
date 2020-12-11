@@ -48,11 +48,58 @@ The following are the four key requirements that have an important impact on sys
 
 ## 4. Use-Case View
 
-[This section lists use cases or scenarios from the use-case model if they represent some significant, central functionality of the final system, or if they have a large architectural coverage - they exercise many architectural elements, or if they stress or illustrate a specific, delicate point of the architecture.]
+This section lists the use cases which means significantly of our final system. 
+The reservation System use cases are:
+- User Login
+- Manager Login
+- Log out
+- User Reserve Conference Room
+- User Views Reserving Record
+- User Cancels Room Reservation
+- Maintain Reservation Information
+- Maintain Reservation Record
+- Maintain User Privileges
 
 ### 4.1 Use-Case Realizations
 
-[This section illustrates how the software actually works by giving a few selected use-case (or scenario) realizations, and explains how the various design model elements contribute to their functionality.]
+This section illustrates how the reservation system actually works by giving a few selected use-case realizations, and explains how the various design model elements contribute to their functionality.
+
+![](../Drawio/D_4.1.drawio.svg)
+
+|No.|Actor|Description|
+|-----|--------|-----|
+|1|User|A person who need to reserve a room 
+|2|Manager|A manager who manages the overall room setting, user privileges and both user's and room's information|
+|3|Participant|A person who use the reserved room which is reserved by the user|
+
+**User Login**
+![](../Drawio/2.2.3.drawio.svg)
+
+**User Log out**
+![](../Drawio/2.2.4.drawio.svg)
+
+**User Reserves Conference Room**
+![](../Drawio/2.2.5.drawio.svg)
+
+**User Cancel Room Reservation**
+![](../Drawio/2.2.7.drawio.svg)
+
+**User Views Reserving Record**
+![](../Drawio/2.2.6.drawio.svg)
+
+**Manager Edits The Room's Overall Settings**
+![](../Drawio/2.2.8.drawio.svg)
+![](../Drawio/2.2.9.drawio.svg)
+
+**Manager Search users**
+![](../Drawio/2.2.10.drawio.svg)
+
+**Manager Edits User's Privilges Settings**
+![](../Drawio/2.2.11.drawio.svg)
+
+**Manager views individual user's room reservation record**
+![](../Drawio/2.2.12.drawio.svg)
+
 
 ## 5. Logical View
 ### 5.1 Overview
@@ -158,9 +205,9 @@ If you are a manager of the system, you can choose to go to the room setting int
 When getting into the function part, user can complete in operating the functions.
 ## 9. Data View (optional)
 
-public/private/protected +/-/#
+This section is the description of the persistent data storage of the system. It implemented the attridutes and the logic of the data storage. 
 
-[A description of the persistent data storage perspective of the system. This section is optional if there is little or no persistent data, or the translation between the Design Model and the Data Model is trivial.]
+![](../Drawio/D_9.drawio.svg)
 
 ## 10. Size and Performance
  The software as designed will support 1,000 concurrent users, due to lack of conference rooms for users to reserve.
