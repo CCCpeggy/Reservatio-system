@@ -83,7 +83,7 @@ This section illustrates how the reservation system actually works by giving a f
 |No.|Actor|Description|
 |-----|--------|-----|
 |1|User|A person who need to reserve a room 
-|2|Manager|A manager who manages the overall room setting, user privileges and both user's and room's information|
+|2|Top Manager|A manager who manages the overall room setting, user privileges and both user's and room's information|
 
 **User Login**
 
