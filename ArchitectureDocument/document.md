@@ -1,4 +1,16 @@
-# Software Architecture Document
+@import "Cover.md" 
+
+<style>
+* {
+  font-family: "Times New Roman"
+}
+</style>
+
+## Table of Contents
+
+[TOC]
+
+<div STYLE="page-break-after: always;"></div>
 
 ## 1. Introduction
 
