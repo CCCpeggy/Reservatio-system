@@ -30,7 +30,11 @@ This document helps users to know more about our product, and can use this syste
 
 ### 1.4 References
 * [Collegiate Sports Paging System - Software Architecture Document](https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/examples/csports/ex_sad.htm#Architectural%20Goals%20and%20Constraints)
-
+* [Conceptual, Logical and Physical Data Model](https://www.visual-paradigm.com/support/documents/vpuserguide/3563/3564/85378_conceptual,l.html)
+* [Example: Software Architecture Document](https://www.ecs.csun.edu/~rlingard/COMP684/Example2SoftArch.htm)
+* [Software Architecture Document — NBDiff 1 documentation](https://nbdiff-docs.readthedocs.io/en/latest/SAD.html)
+* [Wikipedia: Entity-control-boundary](https://en.wikipedia.org/wiki/Entity-control-boundary)
+* [Architectural System for Room Reservation ( Class Diagram (UML))](https://creately.com/diagram/example/hlnjl7fp1/Architectural%20System%20for%20Room%20Reservation)
 ### 1.5 Overview
 
 There are some sections included in this document, some are more important, such as Architectural Goals and Constraints, Use-case views, Logical view, and Process view. These sections help users to understand more about how our system works, and shows the structure of our system to the users.
@@ -80,44 +84,43 @@ This section illustrates how the reservation system actually works by giving a f
 |-----|--------|-----|
 |1|User|A person who need to reserve a room 
 |2|Manager|A manager who manages the overall room setting, user privileges and both user's and room's information|
-|3|Participant|A person who use the reserved room which is reserved by the user|
 
 **User Login**
 
-![](../Drawio/2.2.3.drawio.svg)
+![](../Drawio/2.2.3_2.drawio.svg)
 
 **User Log out**
 
-![](../Drawio/2.2.4.drawio.svg)
+![](../Drawio/2.2.4_2.drawio.svg)
 
 **User Reserves Conference Room**
 
-![](../Drawio/2.2.5.drawio.svg)
+![](../Drawio/2.2.5_2.drawio.svg)
 
 **User Cancel Room Reservation**
 
-![](../Drawio/2.2.7.drawio.svg)
+![](../Drawio/2.2.7_2.drawio.svg)
 
 **User Views Reserving Record**
 
-![](../Drawio/2.2.6.drawio.svg)
+![](../Drawio/2.2.6_2.drawio.svg)
 
 **Manager Edits The Room's Overall Settings**
 
-![](../Drawio/2.2.8.drawio.svg)
-![](../Drawio/2.2.9.drawio.svg)
+![](../Drawio/2.2.8_2.drawio.svg)
+![](../Drawio/2.2.9_2.drawio.svg)
 
 **Manager Search users**
 
-![](../Drawio/2.2.10.drawio.svg)
+![](../Drawio/2.2.10_2.drawio.svg)
 
 **Manager Edits User's Privilges Settings**
 
-![](../Drawio/2.2.11.drawio.svg)
+![](../Drawio/2.2.11_2.drawio.svg)
 
 **Manager views individual user's room reservation record**
 
-![](../Drawio/2.2.12.drawio.svg)
+![](../Drawio/2.2.12_2.drawio.svg)
 
 
 ## 5. Logical View
@@ -240,7 +243,7 @@ If you are a manager of the system, you can choose to go to the room setting int
 
 When getting into the function part, user can complete in operating the functions.
 
-## 9. Data View (optional)
+## 9. Data View
 
 This section is the description of the persistent data storage of the system. It implemented the attridutes and the logic of the data storage. 
 
