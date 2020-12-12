@@ -25,14 +25,11 @@ This document helps users to know more about our product, and can use this syste
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
-**IIS:**
-IIS stands for Internet Information Server, it is an integrated interface for managing various computer network services on Microsoft Windows Server.
+* IIS
+  * IIS stands for Internet Information Server, it is an integrated interface for managing various computer network services on Microsoft Windows Server.
 
 ### 1.4 References
-
-Logical view:
-Process view:
-https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/examples/csports/ex_sad.htm#Architectural%20Goals%20and%20Constraints
+* [Collegiate Sports Paging System - Software Architecture Document](https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/examples/csports/ex_sad.htm#Architectural%20Goals%20and%20Constraints)
 
 ### 1.5 Overview
 
