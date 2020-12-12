@@ -60,15 +60,15 @@ The following are the four key requirements that have an important impact on sys
 This section lists the use cases which means significantly of our final system. 
 The reservation System use cases are:
 
-- User Login
-- Manager Login
-- Log out
-- User Reserve Conference Room
-- User Views Reserving Record
-- User Cancels Room Reservation
-- Maintain Reservation Information
-- Maintain Reservation Record
-- Maintain User Privileges
+* User Login
+* Manager Login
+* Log out
+* User Reserve Conference Room
+* User Views Reserving Record
+* User Cancels Room Reservation
+* Maintain Reservation Information
+* Maintain Reservation Record
+* Maintain User Privileges
 
 ### 4.1 Use-Case Realizations
 
@@ -137,7 +137,7 @@ Our system mainly contains 5 main software packages, they are, respectively:
 2. Application
    * This package is mainly for the functions and architecture of the system's internal operations, including various controllers, providing the system to obtain data, create new data, send data to Google Calendar, update, disable or enable reservations and other functions.
 3. Domain
-   * Including some room packages, reservation packages, account packages, reservation center packages。
+   * Including some room packages, reservation packages, account packages, reservation center packages.
 4. Persistence
    * Including the specific categories reserved by the system, in our design, only room data can be kept by the database.
 5. Services
