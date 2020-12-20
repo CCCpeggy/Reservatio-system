@@ -1,0 +1,74 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="521px" height="81px" viewBox="-0.5 -0.5 521 81" content="&lt;mxfile host=&quot;88e9e993-6533-4e91-95bb-de2d0cc72a5c&quot; modified=&quot;2020-12-19T07:42:51.676Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36&quot; version=&quot;13.10.0&quot; etag=&quot;pE3Zi3nekJV3S3heJYE8&quot; type=&quot;embed&quot;&gt;&lt;diagram id=&quot;HklNhbMAZxgK5JXzDY0j&quot; name=&quot;第 1 页&quot;&gt;7VfBjpswEP0arhHghJBjk2zbQyutmkO3RzfMgiuDkXES6NfXhAHseJNUUbZbVeWC5zFjj988xuCRVV5/kLTMPosEuBf6Se2RtReGgU9ifWuRpkOm0aIDUskSdBqBDfsJfSSiO5ZAZTkqIbhipQ1uRVHAVlkYlVIcbLdnwe1VS5qCA2y2lLvoV5aorEPjcD7iH4GlWb9y0O8vp70z7qTKaCIOBkQePLKSQqhulNcr4C15PS9d3PszT4fEJBTqdwJCTEM1/d4g0VtFsxCFvi2l2BUJtBG+toRUmUhFQfknIUoNBhr8AUo1WCi6U0JDmco5PtXJyOYJ44/Gt9aYkDjugXVtPl43pvUIkuWgQCLY5dwmenbXvSqoTAGh6UCv1iUIPaFstIsEThXb21NRFEg6+A2hj4LpRUIfxRz6WEmUchD79hSV2MktYNRYiXdS0sZwK1uHyvTQAyPRETpW8OVqkj9bzWDiB3O7otHsloJCzdSTMca5AoL2OFdrNIZxuzS6uhjSsNUyex21RLZaho7WT9Gl4KjlBi3gnvaU7zBbCRXIvU5fFF4Ycb3R5XepR2k7qppKQe7qh3PdVFvZHDKmYFPSI2cH3ddtUdCq7DrtM6tbcWEl9iAV1Jdr4bKMAeT03ZqhfTCaLkKZ0W9PX0GzLhajF+ibOfStOAOsisnQ+DoF11m6AynxCSeRy0kQvkBKdAdSIoeUL0Jo0fjr5ZvzMn1LYub/8jF69y5ITkt1tzPTWcpRRawPLbIYr+i1+u/i/1n8t+hr+Ea7UmVXPfP5ZBH54zU9nfeimM7I+LqYtDn+AnTu448UefgF&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 120 30 L 213.63 30.97" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 218.88 31.03 L 211.85 34.46 L 213.63 30.97 L 211.92 27.46 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 220 49.04 L 128.41 49" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 123.16 49 L 130.16 45.5 L 128.41 49 L 130.16 52.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <ellipse cx="260" cy="40" rx="40" ry="40" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 40px; margin-left: 221px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                reservation
+                                <br/>
+                                system
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="260" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    reservation...
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="10" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Client
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="60" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Client
+                </text>
+            </switch>
+        </g>
+        <rect x="400" y="10" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 401px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Room DB
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="460" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Room DB
+                </text>
+            </switch>
+        </g>
+        <path d="M 300 30 L 393.63 30.97" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 398.88 31.03 L 391.85 34.46 L 393.63 30.97 L 391.92 27.46 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 397.96 50.04 L 306.37 50" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 301.12 50 L 308.12 46.5 L 306.37 50 L 308.12 53.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
