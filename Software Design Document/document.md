@@ -217,7 +217,6 @@ This section list the major data of the system by a table. As the table listed b
 | user_Google_client_ID | Int | OOO@email.com | 50 | The google client ID of the user | N |
 | participantsEmail | String | OOO@email.com | 50 | The participants' email | Y |
 | room_id | Int | OOO | 10 | The id of the room | N | 
-| borrow_list | String | | |  | Y |
 | num_participants | Int | | 10 | The number of the total participants | N |
 | disable | Bool | |  | The room is enable or disable | N |
 
@@ -251,11 +250,8 @@ drawn or you can use an automated drawing tool. Just make them as accurate as po
 A discussion of screen objects and actions associated with those objects.
 
 ## 7. Requirements Matrix
-[欣童]
 
-Provide a cross­reference that traces components and data structures to the requirements in your SRS document.
-Use a tabular format to show which system components satisfy each of the functional
-requirements from the SRS. Refer to the functional requirements by the numbers/codes that you gave them in the SRS.
+![](../Drawio/Design_7-1.drawio.svg)
 
 ## 8. APPENDICES
 
