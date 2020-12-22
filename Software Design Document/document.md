@@ -153,23 +153,81 @@ ER MODEL 上網查參考
 
 ### 3.3 Design Rationale
 
-In section 3.1, we can see that there are four ㄉmain entities. According to these four entities, users can know the architecture of the entire system more easily. Through the diagram in section 3.1, users can also know the attributes of each entity very easily, and could infer that what kind of data the system will need when the system is operating, and how the entire system works, too. We think it would be more convinient for users to get familiar with our system.
+In section 3.1, we can see that there are four main entities. According to these four entities, users can know the architecture of the entire system more easily. Through the diagram in section 3.1, users can also know the attributes of each entity very easily, and could infer that what kind of data the system will need when the system is operating, and how the entire system works, too. We think it would be more convinient for users to get familiar with our system.
 
 ## 4. Data Design
-[欣童]
+This section describes the category of data required by the system. The data listed below showed the entity relationship of the system.
 
 ### 4.1 Data Description
 
-Explain how the information domain of your system is transformed into data structures.
-Describe how the major data or system entities are stored, processed and organized. List any
-databases or data storage items.
+This section explain how the information domain of the system is transformed into data structures. It also show the major data such as database and data storage items used in system. 
+
+* A List of Room including:
+    * Room number (Room ID)
+    * The maximum number of total participants
+    * The minimum number of total participants
+    * The state of the room (enable or disable)
+* The information about the reservation center:
+    * The open hours during weekdays
+    * The closed hours during weekdays 
+    * The open hours during weekend
+    * The closed hours during weekend
+* The information about the room that user reserved:
+    * Room number (Room ID)
+    * The password of the Room
+    * Reservation date and time
+    * The rules of the room
+* The information of Reservation made:
+    * User's Name
+    * Participants' email
+    * Room number (Room ID)
+    * Date and Time of the reservation
+    * The Number of participants
+* User Information, most importantly containing:
+    * Google client ID
+    * User's Room reservation records
+    * User Privilege 
+* Manager Information, most importantly containing:
+    * Manager Google client ID
+    * Manager Privilege
+
 
 ### 4.2 Data Dictionary
 
-Alphabetically list the system entities or major data along with their types and descriptions. If
-you provided a functional description in Section 3.2, list all the functions and function
-parameters. If you provid ed an OO description, list the objects and its attributes, methods and
-method parameters.
+This section list the major data of the system by a table. As the table listed below describes the field name, data type, data format, field size, description and is it accepts null value.
+
+**Account**
+| Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
+|------------|-----------|-------------|------------|-------------|---------------------|
+| id | Int | OOO | 50 | The id of the user| N |
+| Google_client_ID | String | OOO@email.com | 50 | The google client ID of the user | N |
+| privilege | Int | | | Defined the user's privilege | Y |
+
+**Room**
+| Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
+|------------|-----------|-------------|------------|-------------|---------------------|
+| id | Int | OOO | 10 | The id of the room | N |
+| maxNumberOfUsers | Int | | 10 | The maximum number of total participants | N |
+| minNumberOfUsers | Int | | 10 | The minimum number of total participants | N |
+| enable | Bool | |  | The room is enable or disable | N |
+
+**Reservation**
+| Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
+|------------|-----------|-------------|------------|-------------|---------------------|
+| user_Google_client_ID | Int | OOO@email.com | 50 | The google client ID of the user | N |
+| participantsEmail | String | OOO@email.com | 50 | The participants' email | Y |
+| room_id | Int | OOO | 10 | The id of the room | N | 
+| borrow_list | String | | |  | Y |
+| num_participants | Int | | 10 | The number of the total participants | N |
+| disable | Bool | |  | The room is enable or disable | N |
+
+**Reservation_Center**
+| Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
+|------------|-----------|-------------|------------|-------------|---------------------|
+| weekdaysOpenTime | Int | HHMM - HHMM | 10 | The open hours of the reservation center during weekdays | N |
+| weekdaysCloseTime | Int | HHMM - HHMM | 10 | The close hours of the reservation center during weekdays | N |
+| weekdendOpenTime | Int | HHMM - HHMM | 10 | The open hours of the reservation center during weekend | N |
+| weekdendCloseTime | Int | HHMM - HHMM | 10 | The close hours of the reservation center during weekend | N |
 
 ## 5. Component Design
 [張家菁]
