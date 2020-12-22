@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RoomSystem.Models.ReservationModel>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Record";
+}
+@using (Html.BeginForm("Record", "Home", new { }, FormMethod.Get))
+{
+    if (ViewBag.Date == null)
+    {
+        <input type="date" name="Date" value="" />
+    }
+    else
+    {
+        <input type="date" name="Date" value="@string.Format("{0:yyyy-MM-dd}", ViewBag.Date)" />
+    }
+    <input type="submit">
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            預約時間
+        </th>
+        <th>
+            是否取消
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BorrowerList)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email);@Html.DisplayFor(modelItem => item.BorrowerList)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Cancel", "Cancel", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

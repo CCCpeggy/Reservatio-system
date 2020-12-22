@@ -1,0 +1,6 @@
+﻿@Html.AntiForgeryToken()
+@if (ViewBag.Authority > 0)
+{
+    <li>@Html.ActionLink("UsersSetting", "UsersSetting", "Home", new { area = "" }, null)</li>
+    <li>@Html.ActionLink("RoomSetting", "RoomSetting", "Home", new { area = "" }, null)</li>
+}
