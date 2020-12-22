@@ -1,0 +1,112 @@
+﻿@model RoomSystem.Models.ReserveModel
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Reserve";
+}
+<div class="row">
+    <div class="col-md-3">
+        <table class="table">
+            <tr>
+                <th>編號</th>
+                <th>人數</th>
+                <th></th>
+            </tr>
+
+            @foreach (var room in Model.Rooms)
+            {
+                <tr>
+                    <td>
+                        R @Html.DisplayFor(modelItem => room.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => room.MinNumberOfUsers) - @Html.DisplayFor(modelItem => room.MaxNumberOfUsers)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Reserve", "Home", new { }, FormMethod.Get))
+                        {
+                            <input type="submit" value="選擇">
+                            <input type="hidden" name="RoomId" value=@room.Id>
+                            <input type="hidden" name="Date" value="@string.Format("{0:yyyy-MM-dd}", Model.Date)">
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="col-md-7">
+        <div class="form-group input-group-sm">
+            @using (Html.BeginForm("Reserve", "Home", new { }, FormMethod.Get))
+            {
+                @*<input type="button" id="Previous" value="←">*@
+                <input type="hidden" name="RoomId" value=@Model.RoomId>
+                <input type="date" name="Date" value="@string.Format("{0:yyyy-MM-dd}", Model.Date)" />
+                @*<input type="button" id="Next" value="→">*@
+                <input type="submit">
+            }
+            @using (Html.BeginForm())
+            {
+                <text>同借人</text> @Html.EditorFor(modelItem => Model.BorrowList)
+                <table class="table">
+                    <tr>
+                        <th>時間</th>
+                        <th>預約</th>
+                    </tr>
+                    @{
+                        for (int i = 0; i < Model.Session.Count; i++)
+                        {
+
+                            var startTime = string.Format("{0:hh\\:mm}", Model.Session[i].StartTime);
+                            var endTime = string.Format("{0:hh\\:mm}", Model.Session[i].EndTime);
+                            if (!Model.Session[i].Borrowed)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => startTime) - @Html.DisplayFor(modelItem => endTime)
+                                    </td>
+                                    <td>
+                                        @Html.CheckBoxFor(modelItem => Model.WantToReserve[i])
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(modelItem => Model.WantToReserve[i])
+                            }
+                        }
+                    }
+
+                </table>
+
+                <input type="hidden" name="RoomId" value=@Model.RoomId>
+                <input type="hidden" name="Date" value=@Model.Date>
+                <input type="submit">
+            }
+        </div>
+    </div>
+</div>
+
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")*@
+
+@*<script>
+        $(".ChoosingRoomBtn").click(function () {
+            $("#roomId").val(dd);
+        });
+    </script>*@
+
+
+@*<script>
+    $.ajax({
+        method: 'get',
+        url: app.dataModel.userInfoUrl,
+        contentType: "application/json; charset=utf-8",
+        headers: {
+            'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
+        },
+        success: function (data) {
+            self.myHometown('您的出生地是: ' + data.);
+        }
+    });
+</script>*@

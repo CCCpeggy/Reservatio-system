@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -23,7 +24,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("首頁", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                    <li>@Html.ActionLink("Reserve", "Reserve", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Record", "Record", "Home", new { area = "" }, null)</li>
+                    @Html.Action("AuthorityLayout", "Home", new {})
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
