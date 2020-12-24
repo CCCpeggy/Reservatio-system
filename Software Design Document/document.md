@@ -235,7 +235,7 @@ This section list the major data of the system by a table. As the table listed b
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
 | participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
 | session | int | <text> </text> | 8 bit | 預約的時段 | N |
-| date | date | yyyy-MM-dd | <text> </text> | 預約的時段 | N |
+| date | date | yyyy-MM-dd | <text> </text> | 預約的日期 | N |
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
