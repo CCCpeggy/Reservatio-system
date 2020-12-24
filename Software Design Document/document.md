@@ -234,8 +234,8 @@ This section list the major data of the system by a table. As the table listed b
 | user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
 | participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
-| session | int | <text> </text> | 8 bit | 預約的時段 | N |
-| date | date | yyyy-MM-dd | <text> </text> | 預約的時段 | N |
+| session | int | <text> </text> | 8 bit | a period of time arranged for the reservation預約的時段 | N |
+| date | date | yyyy-MM-dd | <text> </text> | The date of the reservation預約的時段 | N |
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
@@ -245,7 +245,7 @@ This section list the major data of the system by a table. As the table listed b
 | weekdays_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekdays | N |
 | weekdend_open_time | time | hh:mm:ss.fffz | <text> </text> | The open hours of the reservation center during weekend | N |
 | weekdend_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekend | N |
-| time_per_time_period | time | hh:mm:ss.fffz | <text> </text> | 每個時段的時間長度 | N |
+| time_per_time_period | time | hh:mm:ss.fffz | <text> </text> | The length of every period of time 每個時段的時間長度 | N |
 
 ## 5. Component Design
 <!-- [張家菁]
@@ -272,9 +272,15 @@ information that will be displayed for the user. -->
 皆會被切回此頁面
 登入後即導回原頁面
 
+User Login Interface
+View any interface that need user to login
+
+After login sucessfully, the website will lead the user to the main page
+
 **Home**
 
 已登入使用者才可以檢視，為此系統的介紹頁面。
+An interface introducing the system, only allowing the users who have logged in to access
 
 **Reserve**
 
@@ -283,15 +289,25 @@ information that will be displayed for the user. -->
 切換時，會發get request給後端，後端回應對應的日期的預約狀況。
 按下submit後，會發post request給後端，後端會依據選取的資訊，在資料庫中新增預約紀錄。
 
+The interface that user reserves a meeting room here, only allowing the users who have logged to access
+After the user selected the meeting room, it will send "get request" to the server side, the server side will reply for the reservation state of the meeting room selected by the user
+While the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation state of the date selected by the user
+After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and new an reservation record within the database
+
+
 **Record**
 
 已登入使用者才可以檢視，使用者檢視預約紀錄的頁面。
 一般使用者只能看到自己的紀錄，管理者可以看到所有紀錄。
 
+The interface that user view the reservation record, only allowing the users who have logged to access
+Normal users can only view their own reservation record, the manager can view all the record within the database
+
 **RoomCenterSetting**
 
 已登入管理者才可以檢視
 為更改系統的畫面與選擇編輯會議室的畫面
+
 
 **RoomSetting**
 
@@ -410,6 +426,7 @@ information that will be displayed for the user. -->
 
 **UserEdit**
 
+After the back-endthe user confirmed as a manager 
 後端確認使用者是管理員後，
 根據傳入的user id，
 回傳對應使用者的資料
