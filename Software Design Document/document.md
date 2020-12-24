@@ -133,7 +133,7 @@ The module that allows users to log in.
 
 **reservation module**
 <!-- 可供使用者預約會議室的模塊、裡面包含了會議室編號、日期、時間、參與人等資料。 -->
-A module for users to reserve a reference room, which contains the reference room's ID number, date, time, participants and other information.
+A module for users to reserve a reference room, which contains the reference room's ID number, date, time, attendees and other information.
 
 **record module**
 <!-- 可供使用者查詢借用紀錄的模塊、裡面包含了讓使用者取消的功能。 -->
@@ -179,9 +179,9 @@ This section explain how the information domain of the system is transformed int
 
 * A List of Room including:
     * Room number (Room ID)
-    * The maximum number of total participants
-    * The minimum number of total participants
-    * The state of the room (enable or disable)
+    * The maximum number of total attendees
+    * The minimum number of total attendees
+    * The condition of the room (enable or disable)
 * The information about the reservation center:
     * The open hours during weekdays
     * The closed hours during weekdays 
@@ -190,14 +190,15 @@ This section explain how the information domain of the system is transformed int
 * The information about the room that user reserved:
     * Room number (Room ID)
     * The password of the Room
-    * Reservation date and time
+    * Reservation's date and time
     * The rules of the room
 * The information of Reservation made:
     * User's Name
-    * Participants' email
+    * attendees' email
     * Room number (Room ID)
     * Date and Time of the reservation
-    * The Number of participants
+    * The Number of attendees
+    * Duration
 * User Information, most importantly containing:
     * Google client ID
     * User's Room reservation records
@@ -223,8 +224,8 @@ This section list the major data of the system by a table. As the table listed b
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
 | id | Int | <text> </text> | 16 bit | The id of the room | N |
-| maxNumber_of_users | Int | <text> </text> | 16 bit | The maximum number of total participants | N |
-| minNumber_of_users | Int | <text> </text> | 16 bit | The minimum number of total participants | N |
+| maxNumber_of_users | Int | <text> </text> | 16 bit | The maximum number of total attendees | N |
+| minNumber_of_users | Int | <text> </text> | 16 bit | The minimum number of total attendees | N |
 | enable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation**
@@ -233,9 +234,16 @@ This section list the major data of the system by a table. As the table listed b
 | id | int | <text> </text> | 128 | The id of this reservation| N |
 | user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
+<<<<<<< HEAD
 | participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
 | session | int | <text> </text> | 8 bit | a period of time arranged for the reservation | N |
 | date | date | yyyy-MM-dd | <text> </text> | The date of the reservation | N |
+=======
+| attendeesEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The attendees' email | Y |
+| session | int | <text> </text> | 8 bit | a period of time arranged for the reservation預約的時段 | N |
+| date | date | yyyy-MM-dd | <text> </text> | The date of the reservation預約的時段 | N |
+| duration | date | yyyy-MM-dd | <text></text> | The duration of the reservation | N |
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
@@ -245,7 +253,11 @@ This section list the major data of the system by a table. As the table listed b
 | weekdays_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekdays | N |
 | weekdend_open_time | time | hh:mm:ss.fffz | <text> </text> | The open hours of the reservation center during weekend | N |
 | weekdend_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekend | N |
+<<<<<<< HEAD
 | time_per_time_period | time | hh:mm:ss.fffz | <text> </text> | The length of every period of time  | N |
+=======
+| duration | time | hh:mm:ss.fffz | <text> </text> | The length of duration 每個時段的時間長度 | N |
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 ## 5. Component Design
 <!-- [張家菁]
@@ -270,11 +282,20 @@ information that will be displayed for the user. -->
 <!-- 使用者的登入頁面
 檢視任何需要登入才能進入的頁面
 皆會被切回此頁面
+<<<<<<< HEAD
 登入後即導回原頁面 -->
 
 User Login Interface 
 When viewing any interfaces that requires the user to login, the system will display the User Login Interface to let the user login.
 After the user logs in sucessfully, the website will lead the user to the origin webpage.
+=======
+登入後即導回原頁面
+
+User Login Interface
+View any interface that need user to login
+After any action is done successfully will lead the user back to this interface
+After login successfully, the website will lead the user back to the main page
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 **Home**
 <!-- 已登入使用者才可以檢視，為此系統的介紹頁面。 -->
@@ -288,8 +309,15 @@ An interface introducing the system, only allowing the users who have logged in 
 按下submit後，會發post request給後端，後端會依據選取的資訊，在資料庫中新增預約紀錄。
  -->
 
+<<<<<<< HEAD
 The interface that user reserves a conference room , only allowing the users who have logged to access.
 After the user selected the conference room, it will send "get request" to the server side, the server side will reply for the reservation conditions of the meeting room selected by the user.
+=======
+The interface that user reserves a meeting room here, only allowing the users who have logged to access
+After the user selected the meeting room, it will send "get request" to the server side, the server side will reply for the reservation conditions of the meeting room selected by the user
+While the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation conditions of the date selected by the user
+After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and the reservation will be recorded within the database
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 When the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation conditions of the date selected by the user.
 
@@ -301,7 +329,12 @@ After pressing "submit", it will sent "post request" to the server side, the ser
 已登入使用者才可以檢視，使用者檢視預約紀錄的頁面。
 一般使用者只能看到自己的紀錄，管理者可以看到所有紀錄。 -->
 
+<<<<<<< HEAD
 The interface that displays the reservation record, only allowing users who have logged to access.
+=======
+The interface that display the reservation record, only allowing the users who have logged in to access
+Common users can only access their own reservation record, the manager can view all the record within the database
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 General users can only view their own reservation record, the manager can view all the records in the database.
 
@@ -310,7 +343,12 @@ General users can only view their own reservation record, the manager can view a
 為更改系統的畫面與選擇編輯會議室的畫面
  -->
 
+<<<<<<< HEAD
 Only managers who have logged in can access.
+=======
+Only the managers who have logged in can access
+The interface that the manager manages the system settings and selects the meeting rooms whose settings need to be changed
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 It is an interface that manages the system settings and selects the meeting rooms which it's settings need to be changed.
 **RoomSetting**
@@ -320,8 +358,13 @@ It is an interface that manages the system settings and selects the meeting room
 
 Only the managers who have logged in can access.
 
+<<<<<<< HEAD
 It is an interface that changes the conference room settings, and displays all of the conference rooms.
 
+=======
+Only the managers who have logged in can access
+The interface that the manager manages the overall setting of the meeting room and lists all the meeting room
+>>>>>>> c071e859268fd57e5d4d8498181323b1848883db
 
 **RoomCreate**
 
@@ -331,6 +374,9 @@ It is an interface that changes the conference room settings, and displays all o
 Only the managers who have logged in can access.
 It is an interface that adds a new conference room to the system.
 
+Only the managers who have logged in can access
+The interface that the manager create a new meeting room in the system
+
 **UsersSetting**
 <!-- 已登入管理者才可以檢視
 列出所有使用者，並且可選擇使用者做編輯的畫面 -->
@@ -338,12 +384,18 @@ It is an interface that adds a new conference room to the system.
 Only the managers who have logged in can access.
 It is an interface that lists all users, and select users to be edited.
 
+Only the managers who have logged in can access
+The interface that show all the users and the manager can select a user for editing his/her information
+
 **UserEdit**
 <!-- 已登入管理者才可以檢視 
 更改使用者權限的畫面-->
 
 Only the managers who have logged in can access.
 It is an interface that changes user's authority.
+
+Only the managers who have logged in can access
+The interface that the manager edits the user's privilege
 
 ### 6.2 Screen Images
 
@@ -398,6 +450,8 @@ After clicking Google,  call Google's Oauth 2.0 API to jump to the Google login 
 If it is the user's first login (that is, there is no user's data in the database), add a new user and add it to the database.
 If it is not the user's first login (that is, the user's data is already in the database), the user's data in the database is obtained.
 After getting the user's identity, according to the returnURL accessed by the query, direct to the original page opened by the  user.
+結束後根據query所存取的returnURL，導向原使用者開啟的頁面。
+After clicking into Google, it will call the API of Google's Oauth 2.0, then the login interface will be showed and obtain the user's credentials
 
 **Home**
 
@@ -423,7 +477,7 @@ After pressing "submit", it will sent "post request" to the server side, the ser
 
 The server side replies the user's own reservation records to users.
 When clicking "date query", a get request will be sent to the server side, and the server side will respond the corresponding date's reservation record.
-後端根據使用者回應預約紀錄。
+
 <!--點選查詢日期時，會發get request給後端，後端回應對應的日期的預約紀錄。-->
 
 **RoomCenterSetting**
