@@ -234,8 +234,13 @@ This section list the major data of the system by a table. As the table listed b
 | user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
 | participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
+<<<<<<< HEAD
 | session | int | <text> </text> | 8 bit | a period of time arranged for the reservation預約的時段 | N |
 | date | date | yyyy-MM-dd | <text> </text> | The date of the reservation預約的時段 | N |
+=======
+| session | int | <text> </text> | 8 bit | 預約的時段 | N |
+| date | date | yyyy-MM-dd | <text> </text> | 預約的日期 | N |
+>>>>>>> 8d07ea93daf37ee43f162fd86365349f88934ec0
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
