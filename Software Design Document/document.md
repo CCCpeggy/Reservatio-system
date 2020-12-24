@@ -214,40 +214,49 @@ This section list the major data of the system by a table. As the table listed b
 **Account**
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
-| id | Int | OOO | 50 | The id of the user| N |
-| Google_client_ID | String | OOO@email.com | 50 | The google client ID of the user | N |
-| privilege | Int | | | Defined the user's privilege | Y |
+| id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
+| privilege | Int | <text> </text> | 16 bit | Defined the user's privilege | N |
+| email | String | OOO@OOO.OOO | 128 | Defined the user's email | N |
+| name | String | <text> </text> | 256 | Defined the user's name | N |
 
 **Room**
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
-| id | Int | OOO | 10 | The id of the room | N |
-| maxNumberOfUsers | Int | | 10 | The maximum number of total participants | N |
-| minNumberOfUsers | Int | | 10 | The minimum number of total participants | N |
-| enable | Bool | |  | The room is enable or disable | N |
+| id | Int | <text> </text> | 16 bit | The id of the room | N |
+| maxNumber_of_users | Int | <text> </text> | 16 bit | The maximum number of total participants | N |
+| minNumber_of_users | Int | <text> </text> | 16 bit | The minimum number of total participants | N |
+| enable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation**
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
-| user_Google_client_ID | Int | OOO@email.com | 50 | The google client ID of the user | N |
-| participantsEmail | String | OOO@email.com | 50 | The participants' email | Y |
-| room_id | Int | OOO | 10 | The id of the room | N | 
-| num_participants | Int | | 10 | The number of the total participants | N |
-| disable | Bool | |  | The room is enable or disable | N |
+| id | int | <text> </text> | 128 | The id of this reservation| N |
+| user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
+| room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
+| participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
+| session | int | <text> </text> | 8 bit | 預約的時段 | N |
+| date | date | yyyy-MM-dd | <text> </text> | 預約的時段 | N |
+| disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
-| weekdaysOpenTime | Int | HHMM - HHMM | 10 | The open hours of the reservation center during weekdays | N |
-| weekdaysCloseTime | Int | HHMM - HHMM | 10 | The close hours of the reservation center during weekdays | N |
-| weekdendOpenTime | Int | HHMM - HHMM | 10 | The open hours of the reservation center during weekend | N |
-| weekdendCloseTime | Int | HHMM - HHMM | 10 | The close hours of the reservation center during weekend | N |
+| weekdays_open_time | time | hh:mm:ss.fffz | <text> </text> | The open hours of the reservation center during weekdays | N |
+| weekdays_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekdays | N |
+| weekdend_open_time | time | hh:mm:ss.fffz | <text> </text> | The open hours of the reservation center during weekend | N |
+| weekdend_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekend | N |
+| time_per_time_period | time | hh:mm:ss.fffz | <text> </text> | 每個時段的時間長度 | N |
 
 ## 5. Component Design
-[張家菁]
-In this section, we take a closer look at what each component does in a more systematic way. If you gave a functional description in section 3.2, provide a summary of your algorithm for each function listed in 3.2 in procedural description language (PDL) or pseudocode. If you gave an OO description, summarize each object member function for all the objects listed in 3.2 in PDL or pseudocode. Describe any local data when necessary.
+<!-- [張家菁]
+In this section, we take a closer look at what each component does in a more systematic way. If you gave a functional description in section 3.2, provide a summary of your algorithm for each function listed in 3.2 in procedural description language (PDL) or pseudocode. If you gave an OO description, summarize each object member function for all the objects listed in 3.2 in PDL or pseudocode. Describe any local data when necessary. -->
+
+@import "5/Reservation.html"
+@import "5/Account.html"
+@import "5/Room.html"
 
 ## 6. Human Interface Design
+
 [張家菁]
 
 ### 6.1 Overview of User Interface
@@ -258,15 +267,74 @@ information that will be displayed for the user.
 
 ### 6.2 Screen Images
 
-Display screenshots showing the interface from the user’s perspective. These can be hand­
-drawn or you can use an automated drawing tool. Just make them as accurate as possible.
-(Graph paper works well.)
-6.3 Screen Objects and Actions
-A discussion of screen objects and actions associated with those objects.
+**Login**
+
+![](../image/Login.png)
+
+**Home**
+
+![](../image/Home.png)
+
+**Reserve**
+
+![](../image/Reserve.png)
+
+**Record**
+
+![](../image/Record.png)
+
+**RoomCenterSetting**
+
+![](../image/RoomCenterSetting.jpg)
+
+**RoomSetting**
+
+![](../image/RoomSetting.jpg)
+
+**RoomCreate**
+
+![](../image/RoomSetting.jpg)
+
+**UsersSetting**
+
+![](../image/UsersSetting.jpg)
+
+**UserEdit**
+
+![](../image/UserEdit.jpg)
+
+## 6.3 Screen Objects and Actions
+
+<!-- A discussion of screen objects and actions associated with those objects. -->
+
+**Login**
+
+**Home**
+
+
+**Reserve**
+
+
+**Record**
+
+
+**RoomCenterSetting**
+
+
+**RoomSetting**
+
+
+**RoomCreate**
+
+
+**UsersSetting**
+
+
+**UserEdit**
+
 
 ## 7. Requirements Matrix
 
-![](../Drawio/Design_7-1.drawio.svg)
 
 <!-- ## 8. APPENDICES
 
