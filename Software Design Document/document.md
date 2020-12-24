@@ -379,21 +379,42 @@ information that will be displayed for the user. -->
 
 **RoomCenterSetting**
 
-
+後端確認使用者是管理員後，
+回傳所有會議室的資料
+點儲存則將編輯後內容使用post request給後端，讓後端根據roomid做儲存。
+點選任意的 Room Edit
+會切換到 RoomSetting 的畫面
+點選任意的 Room Delete
+會發request讓後端將對應roomid的資料中的disable設為true
+點選 RoomCreate
+為切換到 RoomCreate 頁面
 
 **RoomSetting**
 
+後端確認使用者是管理員後，
+根據使用者點擊的roomid
+回傳對應room的資訊
+當使用者編輯完成後
+使用post request給後端，讓後端根據roomid做儲存。
 
 **RoomCreate**
 
+後端確認使用者是管理員後才能開啟畫面
+點選完成後，會將使用post request給後端，讓後端新增一筆room的資料。
 
 **UsersSetting**
 
+後端確認使用者是管理員後，
+回傳所有使用者的資資料
+點擊Edit會切換到UserEdit畫面
 
 **UserEdit**
 
-
-
+後端確認使用者是管理員後，
+根據傳入的user id，
+回傳對應使用者的資料
+當使用者編輯完成後
+使用post request將資料傳回給後端，讓後端根據userid做儲存。
 
 ## 7. Requirements Matrix
 
