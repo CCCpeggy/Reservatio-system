@@ -133,7 +133,7 @@ The module that allows users to log in.
 
 **reservation module**
 <!-- 可供使用者預約會議室的模塊、裡面包含了會議室編號、日期、時間、參與人等資料。 -->
-A module for users to reserve a reference room, which contains the reference room's ID number, date, time, participants and other information.
+A module for users to reserve a reference room, which contains the reference room's ID number, date, time, attendees and other information.
 
 **record module**
 <!-- 可供使用者查詢借用紀錄的模塊、裡面包含了讓使用者取消的功能。 -->
@@ -179,9 +179,9 @@ This section explain how the information domain of the system is transformed int
 
 * A List of Room including:
     * Room number (Room ID)
-    * The maximum number of total participants
-    * The minimum number of total participants
-    * The state of the room (enable or disable)
+    * The maximum number of total attendees
+    * The minimum number of total attendees
+    * The condition of the room (enable or disable)
 * The information about the reservation center:
     * The open hours during weekdays
     * The closed hours during weekdays 
@@ -190,14 +190,15 @@ This section explain how the information domain of the system is transformed int
 * The information about the room that user reserved:
     * Room number (Room ID)
     * The password of the Room
-    * Reservation date and time
+    * Reservation's date and time
     * The rules of the room
 * The information of Reservation made:
     * User's Name
-    * Participants' email
+    * attendees' email
     * Room number (Room ID)
     * Date and Time of the reservation
-    * The Number of participants
+    * The Number of attendees
+    * Duration
 * User Information, most importantly containing:
     * Google client ID
     * User's Room reservation records
@@ -223,8 +224,8 @@ This section list the major data of the system by a table. As the table listed b
 | Field Name | Data Type | Data Format | Field Size | Description | Accepts null value? | 
 |------------|-----------|-------------|------------|-------------|---------------------|
 | id | Int | <text> </text> | 16 bit | The id of the room | N |
-| maxNumber_of_users | Int | <text> </text> | 16 bit | The maximum number of total participants | N |
-| minNumber_of_users | Int | <text> </text> | 16 bit | The minimum number of total participants | N |
+| maxNumber_of_users | Int | <text> </text> | 16 bit | The maximum number of total attendees | N |
+| minNumber_of_users | Int | <text> </text> | 16 bit | The minimum number of total attendees | N |
 | enable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation**
@@ -233,9 +234,10 @@ This section list the major data of the system by a table. As the table listed b
 | id | int | <text> </text> | 128 | The id of this reservation| N |
 | user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
-| participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
+| attendeesEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The attendees' email | Y |
 | session | int | <text> </text> | 8 bit | a period of time arranged for the reservation預約的時段 | N |
 | date | date | yyyy-MM-dd | <text> </text> | The date of the reservation預約的時段 | N |
+| duration | date | yyyy-MM-dd | <text></text> | The duration of the reservation | N |
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
@@ -245,7 +247,7 @@ This section list the major data of the system by a table. As the table listed b
 | weekdays_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekdays | N |
 | weekdend_open_time | time | hh:mm:ss.fffz | <text> </text> | The open hours of the reservation center during weekend | N |
 | weekdend_close_time | time | hh:mm:ss.fffz | <text> </text> | The close hours of the reservation center during weekend | N |
-| time_per_time_period | time | hh:mm:ss.fffz | <text> </text> | The length of every period of time 每個時段的時間長度 | N |
+| duration | time | hh:mm:ss.fffz | <text> </text> | The length of duration 每個時段的時間長度 | N |
 
 ## 5. Component Design
 <!-- [張家菁]
@@ -274,8 +276,8 @@ information that will be displayed for the user. -->
 
 User Login Interface
 View any interface that need user to login
-
-After login sucessfully, the website will lead the user to the main page
+After any action is done successfully will lead the user back to this interface
+After login successfully, the website will lead the user back to the main page
 
 **Home**
 
@@ -292,7 +294,7 @@ An interface introducing the system, only allowing the users who have logged in 
 The interface that user reserves a meeting room here, only allowing the users who have logged to access
 After the user selected the meeting room, it will send "get request" to the server side, the server side will reply for the reservation conditions of the meeting room selected by the user
 While the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation conditions of the date selected by the user
-After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and new an reservation is recorded within the database
+After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and the reservation will be recorded within the database
 
 
 **Record**
@@ -300,8 +302,8 @@ After pressing "submit", it will sent "post request" to the server side, the ser
 已登入使用者才可以檢視，使用者檢視預約紀錄的頁面。
 一般使用者只能看到自己的紀錄，管理者可以看到所有紀錄。
 
-The interface that display the reservation record, only allowing the users who have logged to access
-Normal users can only view their own reservation record, the manager can view all the record within the database
+The interface that display the reservation record, only allowing the users who have logged in to access
+Common users can only access their own reservation record, the manager can view all the record within the database
 
 **RoomCenterSetting**
 
@@ -309,7 +311,7 @@ Normal users can only view their own reservation record, the manager can view al
 為更改系統的畫面與選擇編輯會議室的畫面
 
 Only the managers who have logged in can access
-The interface that manage the system settings and selects the meeting rooms which need to be changed its settings
+The interface that the manager manages the system settings and selects the meeting rooms whose settings need to be changed
 
 **RoomSetting**
 
@@ -317,7 +319,7 @@ The interface that manage the system settings and selects the meeting rooms whic
 更改會議室設定，並列出所有會議室的畫面
 
 Only the managers who have logged in can access
-
+The interface that the manager manages the overall setting of the meeting room and lists all the meeting room
 
 **RoomCreate**
 
@@ -325,15 +327,24 @@ Only the managers who have logged in can access
 
 新增會議室的畫面
 
+Only the managers who have logged in can access
+The interface that the manager create a new meeting room in the system
+
 **UsersSetting**
 
 已登入管理者才可以檢視
 列出所有使用者，並且可選擇使用者做編輯的畫面
 
+Only the managers who have logged in can access
+The interface that show all the users and the manager can select a user for editing his/her information
+
 **UserEdit**
 
 已登入管理者才可以檢視
 更改使用者權限的畫面
+
+Only the managers who have logged in can access
+The interface that the manager edits the user's privilege
 
 ### 6.2 Screen Images
 
@@ -383,6 +394,7 @@ Only the managers who have logged in can access
 如果是第一次登入(即資料庫中尚未有使用者的資料)，新增一位使用者，將使用者加進資料庫中。
 如果非第一次登入(即資料庫中有使用者的資料)，則取得資料庫中使用者的資料。
 結束後根據query所存取的returnURL，導向原使用者開啟的頁面。
+After clicking into Google, it will call the API of Google's Oauth 2.0, then the login interface will be showed and obtain the user's credentials
 
 **Home**
 
