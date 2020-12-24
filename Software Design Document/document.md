@@ -234,13 +234,8 @@ This section list the major data of the system by a table. As the table listed b
 | user_id | String | OOOOOOOO-OOOO-OOOO-OOOO-OOOOOOOOOOOO | 128 | The id of the user| N |
 | room_id | Int | <text> </text> | 16 bit | The id of the room | N | 
 | participantsEmail | String | OOO@email.com;OOO@email.com.. | 1280 | The participants' email | Y |
-<<<<<<< HEAD
 | session | int | <text> </text> | 8 bit | a period of time arranged for the reservation預約的時段 | N |
 | date | date | yyyy-MM-dd | <text> </text> | The date of the reservation預約的時段 | N |
-=======
-| session | int | <text> </text> | 8 bit | 預約的時段 | N |
-| date | date | yyyy-MM-dd | <text> </text> | 預約的日期 | N |
->>>>>>> 8d07ea93daf37ee43f162fd86365349f88934ec0
 | disable | Bool | <text> </text> | <text> </text> | The room is enable or disable | N |
 
 **Reservation_Center**
@@ -295,9 +290,9 @@ An interface introducing the system, only allowing the users who have logged in 
 按下submit後，會發post request給後端，後端會依據選取的資訊，在資料庫中新增預約紀錄。
 
 The interface that user reserves a meeting room here, only allowing the users who have logged to access
-After the user selected the meeting room, it will send "get request" to the server side, the server side will reply for the reservation state of the meeting room selected by the user
-While the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation state of the date selected by the user
-After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and new an reservation record within the database
+After the user selected the meeting room, it will send "get request" to the server side, the server side will reply for the reservation conditions of the meeting room selected by the user
+While the user switch the selected meeting room to others, it will send "get request" to the server side, the server side will reply for the reservation conditions of the date selected by the user
+After pressing "submit", it will sent "post request" to the server side, the server side will select the information following the option that is selected by the user, and new an reservation is recorded within the database
 
 
 **Record**
@@ -305,7 +300,7 @@ After pressing "submit", it will sent "post request" to the server side, the ser
 已登入使用者才可以檢視，使用者檢視預約紀錄的頁面。
 一般使用者只能看到自己的紀錄，管理者可以看到所有紀錄。
 
-The interface that user view the reservation record, only allowing the users who have logged to access
+The interface that display the reservation record, only allowing the users who have logged to access
 Normal users can only view their own reservation record, the manager can view all the record within the database
 
 **RoomCenterSetting**
@@ -313,15 +308,21 @@ Normal users can only view their own reservation record, the manager can view al
 已登入管理者才可以檢視
 為更改系統的畫面與選擇編輯會議室的畫面
 
+Only the managers who have logged in can access
+The interface that manage the system settings and selects the meeting rooms which need to be changed its settings
 
 **RoomSetting**
 
 已登入管理者才可以檢視
 更改會議室設定，並列出所有會議室的畫面
 
+Only the managers who have logged in can access
+
+
 **RoomCreate**
 
 已登入管理者才可以檢視
+
 新增會議室的畫面
 
 **UsersSetting**
