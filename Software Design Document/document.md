@@ -261,9 +261,57 @@ In this section, we take a closer look at what each component does in a more sys
 
 ### 6.1 Overview of User Interface
 
-Describe the functionality of the system from the user’s perspective. Explain how the user
+<!-- Describe the functionality of the system from the user’s perspective. Explain how the user
 will be able to use your system to complete all the expected features and the feedback
-information that will be displayed for the user.
+information that will be displayed for the user. -->
+
+**Login**
+
+使用者的登入頁面
+檢視任何需要登入才能進入的頁面
+皆會被切回此頁面
+登入後即導回原頁面
+
+**Home**
+
+已登入使用者才可以檢視，為此系統的介紹頁面。
+
+**Reserve**
+
+已登入使用者才可以檢視，使用者借會議室的頁面
+點選會議室時，會發get request給後端，後端回應對應的會議室的預約狀況。
+切換時，會發get request給後端，後端回應對應的日期的預約狀況。
+按下submit後，會發post request給後端，後端會依據選取的資訊，在資料庫中新增預約紀錄。
+
+**Record**
+
+已登入使用者才可以檢視，使用者檢視預約紀錄的頁面。
+一般使用者只能看到自己的紀錄，管理者可以看到所有紀錄。
+
+**RoomCenterSetting**
+
+已登入管理者才可以檢視
+為更改系統的畫面與選擇編輯會議室的畫面
+
+**RoomSetting**
+
+已登入管理者才可以檢視
+更改會議室設定，並列出所有會議室的畫面
+
+**RoomCreate**
+
+已登入管理者才可以檢視
+新增會議室的畫面
+
+**UsersSetting**
+
+已登入管理者才可以檢視
+列出所有使用者，並且可選擇使用者做編輯的畫面
+
+**UserEdit**
+
+已登入管理者才可以檢視
+更改使用者權限的畫面
 
 ### 6.2 Screen Images
 
@@ -309,16 +357,28 @@ information that will be displayed for the user.
 
 **Login**
 
+點選 Google 後，去呼叫 Google 的 Oauth 2.0 的 API，來跳出 Google登入畫面，取得使用者身分。
+如果是第一次登入(即資料庫中尚未有使用者的資料)，新增一位使用者，將使用者加進資料庫中。
+如果非第一次登入(即資料庫中有使用者的資料)，則取得資料庫中使用者的資料。
+結束後根據query所存取的returnURL，導向原使用者開啟的頁面。
+
 **Home**
 
+已登入才可以檢視，為此系統的介紹頁面。
 
 **Reserve**
 
+點選會議室時，會發get request給後端，後端回應對應的會議室的預約狀況。
+切換時，會發get request給後端，後端回應對應的日期的預約狀況。
+按下submit後，會發post request給後端，後端會依據選取的資訊，在資料庫中新增預約紀錄。
 
 **Record**
 
+後端根據使用者回應預約紀錄。
+點選查詢日期時，會發get request給後端，後端回應對應的日期的預約紀錄。
 
 **RoomCenterSetting**
+
 
 
 **RoomSetting**
@@ -333,8 +393,11 @@ information that will be displayed for the user.
 **UserEdit**
 
 
+
+
 ## 7. Requirements Matrix
 
+![](../Drawio/Design_7-1.drawio.svg)
 
 <!-- ## 8. APPENDICES
 
