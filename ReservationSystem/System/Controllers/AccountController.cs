@@ -121,7 +121,7 @@ namespace System.Controllers
                 case SignInStatus.RequiresVerification:
                 case SignInStatus.LockedOut:
                 default:
-                    return View("Lockout");
+                    return RedirectToAction("Login");
             }
         }
 

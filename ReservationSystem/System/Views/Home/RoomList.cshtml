@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.First().Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.First().MinNumberOfUsers)
         </th>
         <th>
@@ -21,18 +24,21 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinNumberOfUsers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxNumberOfUsers)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "RoomEdit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "RoomDelete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        R @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MinNumberOfUsers)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaxNumberOfUsers)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "RoomEdit", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "RoomDelete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

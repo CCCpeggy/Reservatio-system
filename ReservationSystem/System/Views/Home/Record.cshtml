@@ -13,6 +13,17 @@
     {
         <input type="date" name="Date" value="@string.Format("{0:yyyy-MM-dd}", ViewBag.Date)" />
     }
+    if (ViewBag.Authority > 0)
+    {
+        if (ViewBag.SearchEmail == null)
+        {
+            <input type="text" name="SearchEmail" value="" />
+        }
+        else
+        {
+            <input type="text" name="SearchEmail" value="@ViewBag.SearchEmail" />
+        }
+    }
     <input type="submit">
 }
 <table class="table">

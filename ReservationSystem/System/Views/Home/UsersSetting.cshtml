@@ -37,8 +37,10 @@
             @Html.DisplayFor(modelItem => item.Authority)
         </td>
         <td>
-            @Html.ActionLink("Edit", "UsersEdit", new { id=item.Id }) 
-            @*|@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @if (ViewBag.Authority > item.Authority)
+            {
+                @Html.ActionLink("Edit", "UsersEdit", new { id = item.Id });
+            }
         </td>
     </tr>
 }

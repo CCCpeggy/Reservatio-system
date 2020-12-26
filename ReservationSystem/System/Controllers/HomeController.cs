@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Text.RegularExpressions;
+using System.Globalization;
+using System.Net.Mail;
 
 namespace System.Controllers
 {
@@ -18,6 +21,7 @@ namespace System.Controllers
         public ActionResult AuthorityLayout()
         {
             string ASPNetUserID = User.Identity.GetUserId();
+            ViewBag.Authority = 2;
             if (ASPNetUserID == null)
             {
                 ViewBag.Authority = -1;
@@ -26,8 +30,8 @@ namespace System.Controllers
             {
                 using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
                 {
-                    System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
-                    ViewBag.Authority = user.Authority;
+                    System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).FirstOrDefault();
+                    ViewBag.Authority = user.Id == ASPNetUserID ? user.Authority : -1;
                 }
             }
             return PartialView();
@@ -65,7 +69,7 @@ namespace System.Controllers
                         TimeSpan openTime = isWeekend ? center.WeekendOpenTime : center.WeekdaysOpenTime;
                         TimeSpan closeTime = isWeekend ? center.WeekendCloseTime : center.WeekdaysCloseTime;
                         TimeSpan interval = new TimeSpan(0, center.TimePerTimePeriod, 0);
-                        List<int> borrowedSessionList = (from s in db.Reservations where s.RoomId == roomId && s.Date == date select s.SessionNo).ToList();
+                        List<int> borrowedSessionList = (from s in db.Reservations where s.RoomId == roomId && s.Date == date && !s.Disable select s.SessionNo).ToList();
                         int i = 0;
                         for (TimeSpan startTime = openTime, endTime = startTime.Add(interval); startTime < closeTime; startTime = endTime, endTime = startTime.Add(interval))
                         {
@@ -86,15 +90,35 @@ namespace System.Controllers
         [HttpPost]
         public ActionResult Reserve(RoomSystem.Models.ReserveModel reserveModel)
         {
+            string date = string.Format("{0:yyyy-MM-dd}", reserveModel.Date);
+            List<string> borrower = new List<string>();
+            if (reserveModel.BorrowList != null && reserveModel.BorrowList != "")
+            {
+                borrower = reserveModel.BorrowList.Split(';').Distinct().ToList();
+                foreach (var email in borrower)
+                {
+                    if (!IsValidEmail(email))
+                    {
+                        return Reserve(reserveModel.RoomId, date);
+                    }
+                }
+            }
+
             string ASPNetUserID = User.Identity.GetUserId();
             using (Models.RoomSystemEntities db = new Models.RoomSystemEntities())
             {
                 //var loginInfo = await Net.AuthenticationManager.GetExternalLoginInfoAsync();
                 //loginInfo.Email
+                if (reserveModel.RoomId == null) return Reserve(reserveModel.RoomId.Value, string.Format("{0:yyyy-MM-dd}", reserveModel.Date));
+
+                Models.Rooms room = (from s in db.Rooms where reserveModel.RoomId.Value == s.Id select s).FirstOrDefault();
+                if (room.Id != reserveModel.RoomId.Value || !(borrower.Count + 1 >= room.MinNumberOfUsers && borrower.Count < room.MaxNumberOfUsers))
+                    return Reserve(reserveModel.RoomId, date);
                 int i = 0;
+                var Reservations = (from s in db.Reservations where s.RoomId == reserveModel.RoomId && s.Date == reserveModel.Date && !s.Disable select s.SessionNo).ToList();
                 foreach (var wantToReserve in reserveModel.WantToReserve)
                 {
-                    if (wantToReserve && reserveModel.RoomId != null)
+                    if (wantToReserve && !Reservations.Contains(i))
                     {
                         Models.Reservations reservation = new Models.Reservations();
                         reservation.BorrowerList = "";
@@ -103,32 +127,45 @@ namespace System.Controllers
                         reservation.RoomId = reserveModel.RoomId.Value;
                         reservation.SessionNo = i;
                         reservation.Date = reserveModel.Date;
-                        reservation.BorrowerList = reserveModel.BorrowList;
+                        reservation.BorrowerList = string.Join(";", borrower);
                         db.Reservations.Add(reservation);
                     }
                     i++;
                 }
                 db.SaveChanges();
+
+                System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
+
+                string subject = "已向軟工作業會議預約系統預約會議室";
+                string body = string.Format("{0}:\n您已預約 r {1} 會議室，於 {2:yyyy-MM-dd}，但這是軟工作業，所以沒有會議室可以用喔", user.UserName, room.Id, reserveModel.Date);
+                SendEmail(user.Email, user.UserName, subject, body);
+                
             }
             return Reserve(reserveModel.RoomId.Value, string.Format("{0:yyyy-MM-dd}", reserveModel.Date));
         }
 
-        public ActionResult Record(int? roomId, string Date)
+        public ActionResult Record(int? roomId, string Date, string SearchEmail)
         {
             string ASPNetUserID = User.Identity.GetUserId();
             ViewBag.Date = Date;
+            ViewBag.SearchEmail = SearchEmail;
             using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
             {
                 System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
                 List<System.Models.Reservations> reservations;
+                ViewBag.Authority = user.Authority;
                 if (user.Authority > 0) {
-                    reservations = (from s in db.Reservations select s).ToList();
+                    reservations = (from s in db.Reservations where !s.Disable select s).ToList();
+                    if (SearchEmail != null)
+                    {
+                        reservations = reservations.Where(x => x.BorrowerList.Split(';').Where(y => y.Contains(SearchEmail)).Any() || db.AspNetUsers.Where(w => w.Id == x.AspNetUserId).First().Email.Contains(SearchEmail)).ToList();
+                    }
                 }
                 else
                 {
-                    reservations = (from s in db.Reservations where s.AspNetUserId == ASPNetUserID select s).ToList();
+                    reservations = (from s in db.Reservations where s.AspNetUserId == ASPNetUserID && !s.Disable select s).ToList();
                 }
-                if (Date != null)
+                if (Date != null && Date != "")
                 {
                     DateTime date = DateTime.ParseExact(Date, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                     reservations = reservations.Where(x => x.Date == date).ToList();
@@ -163,6 +200,28 @@ namespace System.Controllers
                return View(new RoomSystem.Models.ReservationCenterModel(center));
             }
         }
+        [HttpPost]
+        public ActionResult RoomSetting(RoomSystem.Models.ReservationCenterModel reserveCenterModel)
+        {
+            using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
+            {
+                string ASPNetUserID = User.Identity.GetUserId();
+                System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
+                if (user.Authority == 0) return View();
+                bool hasReservation = (from s in db.Reservations where s.Date >= DateTime.Today && !s.Disable select s).Any();
+                System.Models.ReservationCenters center = (from s in db.ReservationCenters select s).First();
+                if (!hasReservation)
+                {
+                    center.WeekdaysOpenTime = reserveCenterModel.WeekdaysOpenTime;
+                    center.WeekdaysCloseTime = reserveCenterModel.WeekdaysCloseTime;
+                    center.WeekendOpenTime = reserveCenterModel.WeekendOpenTime;
+                    center.WeekendCloseTime = reserveCenterModel.WeekendCloseTime;
+                    center.TimePerTimePeriod = reserveCenterModel.TimePerTimePeriod;
+                    db.SaveChanges();
+                }
+                return View(new RoomSystem.Models.ReservationCenterModel(center));
+            }
+        }
         public ActionResult RoomList()
         {
             using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
@@ -187,6 +246,10 @@ namespace System.Controllers
         [HttpPost]
         public ActionResult RoomCreate(RoomSystem.Models.RoomModle r)
         {
+            if (!(r.MinNumberOfUsers > 0 && r.MaxNumberOfUsers > r.MinNumberOfUsers))
+            {
+                return View(r);
+            }
             using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
             {
                 string ASPNetUserID = User.Identity.GetUserId();
@@ -217,6 +280,10 @@ namespace System.Controllers
         [HttpPost]
         public ActionResult RoomEdit(RoomSystem.Models.RoomModle r)
         {
+            if (!(r.MinNumberOfUsers > 0 && r.MaxNumberOfUsers > r.MinNumberOfUsers))
+            {
+                return View(r);
+            }
             using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
             {
                 string ASPNetUserID = User.Identity.GetUserId();
@@ -250,6 +317,7 @@ namespace System.Controllers
                 string ASPNetUserID = User.Identity.GetUserId();
                 System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
                 if (user.Authority == 0) return View();
+                ViewBag.Authority = user.Authority;
                 List<System.Models.AspNetUsers> users = (from s in db.AspNetUsers select s).ToList();
                 return View(users.Select(x => new RoomSystem.Models.AspNetUserModel(x)).ToList());
             }
@@ -266,17 +334,90 @@ namespace System.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UsersEdit(string Authority, string Id)
+        public ActionResult UsersEdit(int Authority, string Id)
         {
             using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
             {
                 string ASPNetUserID = User.Identity.GetUserId();
                 System.Models.AspNetUsers user = (from s in db.AspNetUsers where s.Id == ASPNetUserID select s).First();
                 if (user.Authority == 0) return View();
+                if (!(Authority >= 0 && Authority < user.Authority))
+                {
+                    return UsersEdit(Id);
+                }
                 System.Models.AspNetUsers saveUser = (from s in db.AspNetUsers where s.Id == Id select s).First();
-                saveUser.Authority = int.Parse(Authority);
+                saveUser.Authority = Authority;
                 db.SaveChanges();
                 return RedirectToAction("UsersSetting", "Home");
+            }
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    string domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        public static void SendEmail(string email, string name, string subject, string body)
+        {
+            var fromAddress = new MailAddress("S0ftwar33ngineering@gmail.com", "軟體工程會議室系統客服");
+            var toAddress = new MailAddress(email, name);
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 25,
+                EnableSsl = true,
+                Credentials = new Net.NetworkCredential("S0ftwar33ngineering@gmail.com", "")
+            };
+
+            try
+            {
+                using (var message = new MailMessage(fromAddress, toAddress) { Subject = subject, Body = body })
+                {
+                    smtp.Send(message);
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

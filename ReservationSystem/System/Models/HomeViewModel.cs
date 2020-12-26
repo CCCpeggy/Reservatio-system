@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RoomSystem.Models
 {
@@ -109,7 +111,11 @@ namespace RoomSystem.Models
         public System.TimeSpan WeekdaysCloseTime { get; set; }
         public System.TimeSpan WeekendOpenTime { get; set; }
         public System.TimeSpan WeekendCloseTime { get; set; }
+        [Range(1, 1440)]
         public short TimePerTimePeriod { get; set; }
+        public ReservationCenterModel()
+        {
+        }
         public ReservationCenterModel(System.Models.ReservationCenters r)
         {
             Id = r.Id;
@@ -135,6 +141,7 @@ namespace RoomSystem.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        [Range(0, 1)]
         public int Authority { get; set; }
         public AspNetUserModel(System.Models.AspNetUsers u)
         {
