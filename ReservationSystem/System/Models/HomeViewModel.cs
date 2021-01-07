@@ -40,6 +40,7 @@ namespace RoomSystem.Models
         public string AspNetUserId { get; set; }
         public int RoomId { get; set; }
         public int SessionNo { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime Date { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
