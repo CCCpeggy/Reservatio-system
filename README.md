@@ -2,9 +2,9 @@
 
 軟體工程作業──會議室預約系統
 
-## 使用專案
+### Demo 網址
 
-> 如果有不懂的部分就問我喔
+[會議室預約系統](https://system20201222123240.azurewebsites.net/)
 
 ### 下載專案
 
@@ -12,35 +12,17 @@
 git clone https://github.com/CCCpeggy/Reservatio-system.git
 ```
 
-### 寫專案前
+### 系統環境
 
-* 先同步目前的內容
+* Visual Studio 2019
+* 需安裝 [ASP.NET and web development], [Data Storage and processing]
 
-    ``` cmd
-    git pull origin main
-    ```
+### 程式如何建置與發布
 
-* 確定顯示 up-to-date 再開工
-
-### 上傳目前進度
-
-* 先同步目前的內容
-    
-    ``` cmd
-    git pull origin main
-    ```
-
-* 確定顯示 up-to-date 再進行以下動作
-
-    ``` cmd
-    git add .
-    git commit -m "進度描述"
-    git push origin main
-    ```
-
-## document 撰寫環境
-
-* VSCode
-  * 插件
-    * shd101wyy.markdown-preview-enhanced
-    * hediet.vscode-drawio
+* 共同修改內容
+  * 在 Web.config 中更新 connectionStrings 連資料庫的字串
+  * HomeController 的 409 行，放入希望發布的使用者的 email 與 password
+* 使用 Visual Studio 發布功能，可發布於
+  * 本機資料夾
+  * 發布在本機的 IIS 上
+  * 發布在 azure 上
