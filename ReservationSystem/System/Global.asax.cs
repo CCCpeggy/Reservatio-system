@@ -34,24 +34,30 @@ namespace System
         
         public static void SetContent(object source, Timers.ElapsedEventArgs e)
         {
+            List<string> emails = new List<string>();
+            DateTime tomorrow = DateTime.Today.AddDays(1);
             if (DateTime.Now.ToString("HH:mm:ss") == "20:00:00")
             {
                 using (System.Models.RoomSystemEntities db = new System.Models.RoomSystemEntities())
                 {
-                    DateTime tomorrow = DateTime.Today.AddDays(1);
                     foreach (var r in from s in db.Reservations where s.Date == tomorrow && !s.Disable select s)
                     {
-                        string subject = "會議系統提醒";
-                        string body = string.Format("{0:yyyy-MM-dd} 借了 r {1} 會議室，但不用到喔", r.Date, r.RoomId);
                         var user = (from u in db.AspNetUsers where u.Id == r.AspNetUserId select u).First();
-                        System.Controllers.HomeController.SendEmail(user.Email, user.UserName, subject, body);
+                        emails.Add(user.Email);
                         foreach (var email in r.BorrowerList.Split(';'))
                         {
-                            System.Controllers.HomeController.SendEmail(email, "", subject, body);
+                            emails.Add(email);
                         }
 
                     }
                 }
+            }
+            emails = emails.Distinct().ToList();
+            foreach (var email in emails)
+            {
+                string subject = "會議系統提醒";
+                string body = string.Format("{0:yyyy-MM-dd} 有預約會議室，但不用到喔", tomorrow);
+                System.Controllers.HomeController.SendEmail(email, "", subject, body);
             }
         }
     }
